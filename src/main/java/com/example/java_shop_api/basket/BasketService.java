@@ -14,6 +14,10 @@ public class BasketService {
     @Autowired
     private BasketRepository basketRepository;
 
+    public void setBasketRepository(BasketRepository basketRepository) {
+        this.basketRepository = basketRepository;
+    }
+
     public List<Basket> findBasketByUserGuid(String userGuid){
         List<Basket> result = basketRepository.findByUserGuid(userGuid);
         return result;
