@@ -1,13 +1,8 @@
 package com.example.java_shop_api.payment;
 
-import com.example.java_shop_api.basket.Basket;
-import com.sun.istack.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Calendar;
 import java.util.Optional;
 
 @Service
@@ -16,21 +11,21 @@ public class PaymentService {
     @Autowired
     PaymentRepository paymentRepository;
 
-    public Payment createdPayment(@NotNull UserPayment userPayment){
-        String dateString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
-        String invoiceNo = "00"+dateString;
-        String barcode = "01"+dateString;
-        String transactionDate = dateString;
-        String expireDate = dateString;
+    public void setPaymentRepository(PaymentRepository paymentRepository) {
+        this.paymentRepository = paymentRepository;
+    }
+
+    public Payment createdPayment(UserPayment userPayment){
 
         Payment payment = new Payment();
+        payment.setId(1);
         payment.setUserGuid(userPayment.getUserGuid());
         payment.setName(userPayment.getUserName());
         payment.setAmount(userPayment.getAmount());
-        payment.setInvoiceNo(invoiceNo);
-        payment.setBarcode(barcode);
-        payment.setTransactionDate(transactionDate);
-        payment.setExpiredDate(expireDate);
+        payment.setInvoiceNo("231564623");
+        payment.setBarcode("000874841510");
+        payment.setTransactionDate("25/02/2018 23:33");
+        payment.setExpiredDate("27/02/2018 23:33");
         payment.setDetail("JavaShop");
         payment.setPayee("www.JavaShop.com \n Tel:0009900");
 

@@ -8,7 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class Payment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String userGuid;
     private String name;

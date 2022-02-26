@@ -11,6 +11,10 @@ public class UserService {
     @Autowired
     private  UserRepository userRepository;
 
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     public Optional<User> findByUserGuid(String userGuid){
         Optional<User> result = userRepository.findByUserGuid(userGuid);
         return  result;

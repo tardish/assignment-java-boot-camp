@@ -12,6 +12,10 @@ public class ProductService {
     @Autowired
     private  ProductRepository productRepository;
 
+    public void setProductRepository(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     public Optional<Product> findProductByName(String name){
         Optional<Product> result = productRepository.findByName(name);
         return  result;
