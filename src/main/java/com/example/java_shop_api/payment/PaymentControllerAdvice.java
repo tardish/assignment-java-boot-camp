@@ -1,4 +1,4 @@
-package com.example.java_shop_api.basket;
+package com.example.java_shop_api.payment;
 
 import com.example.java_shop_api.product.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
-public class BasketControllerAdvice {
-    @ExceptionHandler(BasketNotFoundException.class)
+public class PaymentControllerAdvice {
+    @ExceptionHandler(PaymentNotFoundException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String basketNotFound(BasketNotFoundException e){
-        return "Basket : "+e.getMessage()+" not found";
+    public String paymentNotFound(PaymentNotFoundException e){
+        return "Payment id: "+e.getMessage()+" not found";
     }
 }

@@ -2,6 +2,8 @@ package com.example.java_shop_api;
 
 import com.example.java_shop_api.basket.Basket;
 import com.example.java_shop_api.basket.BasketRepository;
+import com.example.java_shop_api.payment.Payment;
+import com.example.java_shop_api.payment.PaymentRepository;
 import com.example.java_shop_api.product.Product;
 import com.example.java_shop_api.product.ProductRepository;
 import com.example.java_shop_api.user.User;
@@ -11,6 +13,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 @SpringBootApplication
 public class JavaShopApiApplication {
@@ -22,6 +26,8 @@ public class JavaShopApiApplication {
 	private BasketRepository basketRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private PaymentRepository paymentRepository;
 
 	@PostConstruct
 	public void initialData(){
@@ -49,6 +55,25 @@ public class JavaShopApiApplication {
 		user.setRoad("1112");
 		user.setTown("phayao");
 		userRepository.save(user);
+
+		String dateString = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+		String invoiceNo = "00"+dateString;
+		String barcode = "01"+dateString;
+		String transactionDate = dateString;
+		String expireDate = dateString;
+
+		Payment payment = new Payment();
+		payment.setId(1);
+		payment.setUserGuid("test");
+		payment.setName("Sek");
+		payment.setAmount(555.55);
+		payment.setInvoiceNo(invoiceNo);
+		payment.setBarcode(barcode);
+		payment.setTransactionDate(transactionDate);
+		payment.setExpiredDate(expireDate);
+		payment.setDetail("JavaShop");
+		payment.setPayee("www.JavaShop.com \n Tel:0009900");
+		paymentRepository.save(payment);
 	}
 
 
