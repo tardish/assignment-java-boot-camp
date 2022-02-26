@@ -1,5 +1,7 @@
 package com.example.java_shop_api;
 
+import com.example.java_shop_api.basket.Basket;
+import com.example.java_shop_api.basket.BasketRepository;
 import com.example.java_shop_api.product.Product;
 import com.example.java_shop_api.product.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ public class JavaShopApiApplication {
 
 	@Autowired
 	private ProductRepository productRepository;
+	@Autowired
+	private BasketRepository basketRepository;
 
 	@PostConstruct
 	public void initialData(){
@@ -22,6 +26,12 @@ public class JavaShopApiApplication {
 		product.setPrice(555.55);
 		product.setUrlImg("wwe.Images.command");
 		productRepository.save(product);
+
+		Basket basket = new Basket();
+		basket.setProductId(1);
+		basket.setProductPrice(555.55);
+		basket.setUserGuid("userGuid");
+		basketRepository.save(basket);
 	}
 
 
