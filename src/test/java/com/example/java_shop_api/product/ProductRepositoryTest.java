@@ -16,6 +16,7 @@ class ProductRepositoryTest {
     void findProductByName() {
 
         Product product = new Product();
+        product.setId(1);
         product.setName("TestProduct");
         product.setPrice(555.55);
         product.setUrlImg("wwe.Images.command");
@@ -27,6 +28,7 @@ class ProductRepositoryTest {
     @Test
     void findProductById() {
         Product product = new Product();
+        product.setId(1);
         product.setName("TestProduct");
         product.setPrice(555.55);
         product.setUrlImg("wwe.Images.command");
