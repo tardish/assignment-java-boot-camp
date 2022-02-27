@@ -4,7 +4,6 @@
 
 
 ## Run Command
-* ./mvnw clean
-* ./mvnw test
-* ./mvnw clean package
+* $mvnw clean test
+* $mvnw package
 
